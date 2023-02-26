@@ -1,0 +1,29 @@
+version: "3.1"
+services:
+  app:
+    image: cosmtrek/air
+    environment:
+      - BOOK_SERVICE_MONGO_CONNECTION_URL=mongodb://bookkeeper:123456@database:27017/?authSource=admin
+      - BOOK_SERVICE_MONGO_DATABASE_NAME=book-service
+      - BOOK_SERVICE_PORT=6969
+      - BOOK_SERVICE_LOCAL_STORAGE_DIRECTORY=/opt/booksvc/tmp
+    volumes:
+      - ${PWD}:/opt/booksvc
+      - ${GOPATH}:/go
+    working_dir: /opt/booksvc
+    ports:
+      - "6969:6969"
+    networks:
+      - booksvc
+  database:
+    image: mongo
+    networks:
+      - booksvc
+    volumes:
+      - database:/data/db
+    ports:
+      - "27017:27017"
+networks:
+  booksvc:
+volumes:
+  database:
