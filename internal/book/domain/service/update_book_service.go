@@ -26,7 +26,7 @@ func (s *UpdateBookServiceImpl) Call(ctx context.Context, book book_model.Book) 
 	}
 
 	// Book's thumbnail MUST exist
-	if book.Thumbnail, err = s.imageRepository.GetImage(ctx, book.Cover.ID); err != nil {
+	if book.Thumbnail, err = s.imageRepository.GetImage(ctx, book.Thumbnail.ID); err != nil {
 		return book_model.Book{}, err
 	}
 

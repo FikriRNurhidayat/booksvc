@@ -2,7 +2,7 @@ package book_presentation
 
 import (
 	book_model "github.com/fikrirnurhidayat/booksvc/internal/book/domain/model"
-	"github.com/fikrirnurhidayat/booksvc/internal/image/presentation"
+	image_presentation "github.com/fikrirnurhidayat/booksvc/internal/image/presentation"
 )
 
 type (
